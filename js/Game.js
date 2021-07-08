@@ -7,7 +7,7 @@ class Game {
 
     this.leader1 = createElement("h2");
     this.leader2 = createElement("h2");
-    this.playerMoving = false;                                // C40 //SA
+    this.playerMoving = false; // C40 //SA
   }
 
   getState() {
@@ -43,23 +43,23 @@ class Game {
     powerCoins = new Group();
 
     // Adding fuel sprite in the game
-    this.addSpirtes(fuels, 4, fuelImage, 0.02);
+    this.addSprites(fuels, 4, fuelImage, 0.02);
 
     // Adding coin sprite in the game
-    this.addSpirtes(powerCoins, 18, powerCoinImage, 0.09);
+    this.addSprites(powerCoins, 18, powerCoinImage, 0.09);
   }
 
-  addSpirtes(spriteGroup, numberOfSprites, spirteImage, scale) {
+  addSprites(spriteGroup, numberOfSprites, spriteImage, scale) {
     for (var i = 0; i < numberOfSprites; i++) {
       var x, y;
 
       x = random(width / 2 + 150, width / 2 - 150);
       y = random(-height * 4.5, height - 400);
-      var spirte = createSprite(x, y);
-      spirte.addImage("spirte", spirteImage);
+      var sprite = createSprite(x, y);
+      sprite.addImage("sprite", spriteImage);
 
-      spirte.scale = scale;
-      spriteGroup.add(spirte);
+      sprite.scale = scale;
+      spriteGroup.add(sprite);
     }
   }
 
@@ -89,7 +89,7 @@ class Game {
   play() {
     this.handleElements();
     this.handleResetButton();
- 
+
     Player.getPlayersInfo();
     player.getCarsAtEnd();
 
@@ -128,8 +128,6 @@ class Game {
 
       // C40 // SA
 
-
-      
       if (this.playerMoving) {
         player.positionY += 5;
         player.update();
@@ -137,11 +135,9 @@ class Game {
 
       // handling keyboard events
       this.handlePlayerControls();
-      
 
       // C40 // TA
       // Finshing Line
-      
 
       const finshLine = height * 6 - 100;
 
@@ -152,7 +148,7 @@ class Game {
         player.update();
         this.showRank();
       }
-      
+
       drawSprites();
     }
   }
@@ -213,9 +209,6 @@ class Game {
 
   //C40 //TA
 
-
-
-
   showLife() {
     push();
     image(lifeImage, width / 2 - 130, height - player.positionY - 400, 20, 20);
@@ -272,7 +265,7 @@ class Game {
 
   handlePlayerControls() {
     if (keyIsDown(UP_ARROW)) {
-      this.playerMoving = true;                      //C40 //SA
+      this.playerMoving = true; //C40 //SA
       player.positionY += 10;
       player.update();
     }
@@ -290,8 +283,6 @@ class Game {
 
   // C40 //Bp // TA
 
-
-
   showRank() {
     swal({
       title: `Awesome!${"\n"}Rank${"\n"}${player.rank}`,
@@ -303,11 +294,7 @@ class Game {
     });
   }
 
-
-
   //C40 //Bp // SA
-
-
 
   gameOver() {
     swal({
